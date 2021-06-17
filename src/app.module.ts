@@ -2,7 +2,7 @@
  * @Author: xuziyong
  * @Date: 2021-06-07 22:56:32
  * @LastEditors: xuziyong
- * @LastEditTime: 2021-06-08 01:38:19
+ * @LastEditTime: 2021-06-13 17:16:39
  * @Description: TODO
  */
 import { Module, ValidationPipe } from '@nestjs/common';
@@ -10,11 +10,19 @@ import { APP_FILTER, APP_PIPE } from '@nestjs/core';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { DemoModule } from './demo/demo.module';
-import { HttpExceptionFilterApp } from './filters/http-exception-app.filter';
-import { ClassValidationPipe } from './pipes/validation.pipe';
+import { HttpExceptionFilterApp } from '../common/filters/http-exception-app.filter';
+import { ClassValidationPipe } from '../common/pipes/validation.pipe';
+import { InfluxDemoModule } from './influx-demo/influx-demo.module';
+import { InfluxCronModule } from './influx-cron/influx-cron.module';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
-  imports: [DemoModule],
+  imports: [
+    ScheduleModule.forRoot(),
+    DemoModule,
+    InfluxDemoModule,
+    InfluxCronModule,
+  ],
   controllers: [AppController],
   providers: [
     {

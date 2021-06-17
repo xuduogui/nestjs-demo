@@ -2,19 +2,16 @@
  * @Author: xuziyong
  * @Date: 2021-06-07 22:56:32
  * @LastEditors: xuziyong
- * @LastEditTime: 2021-06-08 01:34:46
+ * @LastEditTime: 2021-06-12 17:17:49
  * @Description: TODO
  */
 import { HttpAdapterHost, NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import {
-  AllExceptionsFilter,
-  AllExceptionsFilterInheritance,
-  HttpExceptionFilterApp,
-} from './filters/http-exception-app.filter';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    logger: ['debug', 'error', 'log'],
+  });
 
   // 全局过滤器使用
   // app.useGlobalFilters(new AllExceptionsFilter());

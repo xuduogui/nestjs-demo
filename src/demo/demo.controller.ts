@@ -2,7 +2,7 @@
  * @Author: xuziyong
  * @Date: 2021-06-07 23:03:58
  * @LastEditors: xuziyong
- * @LastEditTime: 2021-06-08 01:34:14
+ * @LastEditTime: 2021-06-12 16:04:05
  * @Description: TODO
  */
 import {
@@ -20,7 +20,7 @@ import {
   ParseIntPipe,
   UsePipes,
 } from '@nestjs/common';
-import { ClassValidationPipe } from 'src/pipes/validation.pipe';
+import { ClassValidationPipe } from '../../common/pipes/validation.pipe';
 import { DemoService } from './demo.service';
 import { CreateDemoDto } from './dto/create-demo.dto';
 import { UpdateDemoDto } from './dto/update-demo.dto';
